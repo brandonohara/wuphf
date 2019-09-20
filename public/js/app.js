@@ -1786,6 +1786,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    featured: {
+      type: Boolean,
+      "default": true
+    }
+  },
   data: function data() {
     return {
       limit: 1,
@@ -1802,6 +1808,7 @@ __webpack_require__.r(__webpack_exports__);
       this.loading = true;
       axios.get('api/v1/wuphfs', {
         params: {
+          'featured': this.featured,
           'limit': this.limit,
           'page': this.page
         }

@@ -21,6 +21,12 @@
 
 <script>
     export default {
+        props: {
+            featured: {
+                type: Boolean,
+                default: true
+            }
+        },
         data() {
             return {
                 limit: 1,
@@ -35,6 +41,7 @@
                 this.loading = true;
                 axios.get('api/v1/wuphfs', {
                     params: {
+                        'featured': this.featured,
                         'limit': this.limit, 
                         'page': this.page
                     }

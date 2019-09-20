@@ -31,6 +31,7 @@ class Setup extends Command
         $user = User::where('email', 'ryan.howard@gmail.com')->first();
 
         if ($user) {
+            $user->admin = true;
             $user->password = Hash::make($password);
             $user->save();
         }

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
    <div class="row">
-       <wuphfs-container></wuphfs-container>
+       <wuphfs-container :featured="{{ $featured ? 1 : 0 }}"></wuphfs-container>
    </div>
 </div>
 @endsection

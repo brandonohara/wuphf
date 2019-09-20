@@ -12,9 +12,11 @@
 */
 
 Route::get('/', function () {
-    return auth()->check() ? redirect()->route('home') : redirect()->route('home');
+    return auth()->check() ? redirect()->route('wuphfs.featured') : redirect()->route('wuphfs.featured');
 });
+
+Route::get('/featured', 'PageController@index')->name('wuphfs.featured');
+Route::get('/all', 'PageController@all')->name('wuphfs.all');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
