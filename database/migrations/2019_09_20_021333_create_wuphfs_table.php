@@ -13,7 +13,8 @@ class CreateWuphfsTable extends Migration
             $table->unsignedInteger('user_id')->index();
             $table->string('text');
             $table->string('url');
-            $table->boolean('approved')->default(1);
+            $table->boolean('approved')->default(0);
+            $table->boolean('featured')->default(0);
             $table->timestamps();
         });
     }
