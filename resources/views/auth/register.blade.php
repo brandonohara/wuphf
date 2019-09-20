@@ -5,6 +5,13 @@
         'method' => 'post',
         'action' => route('register')
     ])
+        @include('forms.inputs.text', [
+            'name' => 'handle',
+            'placeholder' => 'Username',
+            'value' => old('handle'),
+            'required' => true
+        ])
+
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 @include('forms.inputs.text', [
