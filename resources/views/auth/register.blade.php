@@ -1,77 +1,63 @@
-@extends('layouts.app')
+@extends('layouts.authentication')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+@section('authentication')
+    @component('forms.base', [
+        'method' => 'post',
+        'action' => route('register')
+    ])
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                @include('forms.inputs.text', [
+                    'name' => 'first',
+                    'placeholder' => 'First',
+                    'value' => old('first'),
+                    'required' => true
+                ])
+            </div>
+            <div class="col-xs-12 col-md-6">
+                @include('forms.inputs.text', [
+                    'name' => 'last',
+                    'placeholder' => 'Last',
+                    'value' => old('last'),
+                    'required' => true
+                ])
             </div>
         </div>
-    </div>
-</div>
+
+        @include('forms.inputs.text', [
+            'name' => 'email',
+            'placeholder' => 'Email',
+            'value' => old('email'),
+            'required' => true
+        ])
+
+        @include('forms.inputs.text', [
+            'type' => 'password',
+            'name' => 'password',
+            'placeholder' => 'Password',
+            'required' => true
+        ])
+
+        @include('forms.inputs.text', [
+            'type' => 'password',
+            'name' => 'password_confirmation',
+            'placeholder' => 'Password',
+            'required' => true
+        ])
+
+        <div class="form-group row align-items-center">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Register') }}
+                </button>
+            </div>
+            @if (Route::has('password.request'))
+                <div class="col">
+                    <a class="text-right" href="{{ route('login') }}">
+                        {{ __('Already have an Account?') }}
+                    </a>
+                </div>
+            @endif
+        </div>
+    @endcomponent
 @endsection
