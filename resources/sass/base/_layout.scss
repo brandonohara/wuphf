@@ -1,10 +1,17 @@
 .content-container {
     display: flex;
+    min-height: 400px;
 
     > div {
         height: 100%;
     }
     .content {
         flex: 1;
+    }
+}
+
+@media(min-width: 992px) {
+    .content-container {
+        min-height: calc(100vh - 80px);
     }
 }

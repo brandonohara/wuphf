@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
    <div class="row">
-       <h1>THIS IS THE APPLICATION</h1>
+       <wuphfs-container></wuphfs-container>
    </div>
 </div>
 @endsection

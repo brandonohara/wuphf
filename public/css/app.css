@@ -10646,6 +10646,7 @@ a.text-dark:focus {
 
 .content-container {
   display: flex;
+  min-height: 400px;
 }
 
 .content-container > div {
@@ -10654,6 +10655,12 @@ a.text-dark:focus {
 
 .content-container .content {
   flex: 1;
+}
+
+@media (min-width: 992px) {
+  .content-container {
+    min-height: calc(100vh - 80px);
+  }
 }
 
 .authentication-container {
@@ -10672,5 +10679,18 @@ a.text-dark:focus {
 
 .authentication-container .authentication-logo {
   margin-bottom: 30px;
+}
+
+.wuphfs-container {
+  width: 100%;
+}
+
+.wuphf .metadata {
+  display: flex;
+}
+
+.wuphf .metadata .date {
+  flex: 1;
+  margin-left: 10px;
 }
 
