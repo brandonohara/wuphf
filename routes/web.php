@@ -12,11 +12,11 @@
 */
 
 Route::get('/', function () {
-    return auth()->check() ? redirect()->route('wuphfs.featured') : redirect()->route('wuphfs.featured');
+    return view('construction.index');
 });
 
-Route::get('/featured', 'PageController@index')->name('wuphfs.featured');
-Route::get('/all', 'PageController@all')->name('wuphfs.all');
+//Route::get('/featured', 'PageController@index')->name('wuphfs.featured');
+//Route::get('/all', 'PageController@all')->name('wuphfs.all');
 
-Auth::routes(['verify' => true]);
+//Auth::routes(['verify' => true, 'register' => false]);
 

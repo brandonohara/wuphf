@@ -13,9 +13,6 @@
                     <li class="nav-item">
                         <a href="{{ route('login') }}">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('register') }}">Register</a>
-                    </li>
                 @endguest
                 @if(auth()->check())
                     <li class="nav-item dropdown">
