@@ -35,7 +35,7 @@ class WuphfController extends Controller
     {
         $wuphf = new Wuphf();
         $wuphf->user_id = auth()->user()->id;
-        $wuphf->approved = 1;
+        $wuphf->approved = 0;
         $wuphf->featured = 0;
         $wuphf->fill(request()->all());
         $wuphf->save();
