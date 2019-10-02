@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
             $user->fill($row);
             $user->email_verified_at = Carbon::now();
             $user->password = Hash::make(str_random(32));
+            $user->api_token = str_random(32);
             $user->save();
 
             $users->push($user);

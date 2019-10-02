@@ -23,6 +23,7 @@ try {
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['Authorization'] = `Bearer eeconf-2019-workshop`
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -36,6 +37,13 @@ if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+
+
+let apitoken = document.head.querySelector('meta[name="api-token"]');
+if (apitoken) {
+    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + apitoken.content;
+    console.log('API Token: ', apitoken.content);
 }
 
 /**

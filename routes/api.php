@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => [], 'prefix' => 'v1', 'namespace' => 'API\V1'], function(){
+Route::group(['middleware' => ['auth:api'], 'prefix' => 'v1', 'namespace' => 'API\V1'], function(){
     Route::apiResource('wuphfs', 'WuphfController');
 });

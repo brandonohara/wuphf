@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('admin')->default(0);
             $table->boolean('banned')->default(0);
+            $table->string('api_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

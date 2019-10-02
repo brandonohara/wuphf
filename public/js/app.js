@@ -49441,6 +49441,7 @@ try {
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['Authorization'] = "Bearer eeconf-2019-workshop";
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -49453,6 +49454,13 @@ if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+
+var apitoken = document.head.querySelector('meta[name="api-token"]');
+
+if (apitoken) {
+  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + apitoken.content;
+  console.log('API Token: ', apitoken.content);
 }
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
